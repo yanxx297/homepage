@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<title>Qiuchen Yan&#39;s Homepage</title>
+
+<head>
+  <style>
+    body {
+      max-width: 60%;
+      padding-top: 25px;
+      margin: auto;
+      background-color: #f5f4f0;
+    }
+
+    p {
+      font-size: 14pt;
+      margin: 0px;
+      line-height: 1.3;
+    }
+
+    h2 {
+      margin: 0px;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      margin: 0px;
+      margin-top: 10px;
+    }
+
+    a {
+      cursor: pointer;
+    }
+
+    .modal {
+      z-index: 3;
+      display: none;
+      padding-top: 8%;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.4)
+    }
+
+    .modal-content {
+      margin: auto;
+      background-color: #fff;
+      position: relative;
+      padding: 40px;
+      outline: 0;
+      width: 60%;
+      max-height: calc(100vh - 210px);
+      overflow-y: auto;
+    }
+
+    .animate-bottom {
+      position: relative;
+      animation: animatebottom 0.4s
+    }
+
+    @keyframes animatebottom {
+      from {
+        bottom: -300px;
+        opacity: 0
+      }
+      to {
+        bottom: 0;
+        opacity: 1
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <table style="width:100%">
+    <tr>
+      <td rowspan="2" style="width:200px">
+        <image src="photo" style="width:90%;border-radius:10px"></image>
+      </td>
+      <td>
+        <p>Qiuchen Yan
+          <br /> PhD Student
+          <br /> Department of Science and Engineering
+          <br /> 4-225A
+          <br /> 200 Union St. SE.
+          <br /> University of Minnesota (Twin Cities)
+          <br /> Minneapolis, MN, 55455
+          <br /> yanxx297@umn.edu
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><a href="resume.pdf" target="_blank">CV</a></p>
+      </td>
+    </tr>
+  </table>
+
+  <hr>
+  <h2>
+    <u>Projects</u>
+  </h2>
+   
+  <div class="container">
+    <a onclick="setModal('Fast PokeEMU');document.getElementById('Fast PokeEMU').style.display='block'">
+      <h3>Fast PokeEMU</h3>
+      <p>Software that emulates a CPU are widely used in various fields, but it is impossible to develop an emulator that works correctly without high coverage testing. Existing testing tools are either not fully automatic or not efficient enough to run a large number of tests required for extensive testing. In this paper, we explore techniques for combining a large number of tests into one program to reduce overheads such as booting emulators....</p>
+    </a>
+    <div id="Fast PokeEMU" class="modal">
+      <div class="modal-content animate-bottom">
+        <div class="container">
+          <p>Software that emulates a CPU are widely used in various fields, but it is
+impossible to develop an emulator that works correctly without high coverage
+testing.
+Existing testing tools are either not fully automatic or not efficient enough</p>
+
+<p>to run a large number of tests required for extensive testing.
+In this paper, we explore techniques for combining a large number of tests into
+one program to reduce overheads such as booting emulators.
+To save memory space while still be able to capture each bug with high
+probability, we chain the output of one test case with the input of the next,
+and integrate the Feistel construction with those tests so that each step is
+invertible.
+In addition, we further reuse code space by repeating each test case with
+randomly changed inputs.
+We implement those techniques on PokeEMU, a tool that generates tests using
+symbolic execution.
+According to our evaluation, the improved PokeEMU run tests much faster, but
+still can capture most different behaviors detected by original PokeEMU.</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+    
+  <div class="container">
+    <a onclick="setModal('Type Inference');document.getElementById('Type Inference').style.display='block'">
+      <h3>Type Inference</h3>
+      <p>Recovering variable types or other structural information from binaries is useful for reverse engineering in security, and to facilitate other kinds of analysis on binaries. However such reverse engineering tasks often lack precise problem definitions; some information is lost during compilation, and existing tools can exhibit a variety of errors. As a step in the direction of more principled reverse engineering algorithms, we isolate a sub-task of type inference, namely determining whether each integer variable is declared as signed or unsigned....</p>
+    </a>
+    <div id="Type Inference" class="modal">
+      <div class="modal-content animate-bottom">
+        <div class="container">
+          <p>Recovering variable types or other structural information from binaries is useful for reverse engineering in security, and to facilitate other kinds of analysis on binaries.<br />
+However such reverse engineering tasks often lack precise problem definitions;
+some information is lost during compilation, and existing tools can exhibit a variety of errors.<br />
+As a step in the direction of more principled reverse engineering algorithms, we isolate a sub-task of type inference, namely determining whether each integer variable is declared as signed or unsigned.<br />
+The difficulty of this task arises from the fact that signedness information in a binary, when present at all, is associated with operations rather than with data locations.<br />
+We propose a graph-based algorithm in which variables represent nodes and edges connect variables with the same signedness.<br />
+In a program without casts or conversions, signed and unsigned variables would form distinct connected components, but when casts are present, signed and unsigned variables will be connected.<br />
+Reasoning that developers prefer source code without casts, we compute a minimum cut between signed and unsigned variables, which corresponds to a minimal set of casts required for a legal typing.<br />
+We evaluate this algorithm by erasing signedness information from debugging symbols, and testing how well our tool can recover it.<br />
+Applying an intra-procedural version of the algorithm to the GNU Coreutils, we observe that many variables are unconstrained as to signedness, but that it almost all cases our tool recovers either the type from the original source, or a type that yields the same program behavior.</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+    
+  <div class="container">
+    <a onclick="setModal('Loop Summarization');document.getElementById('Loop Summarization').style.display='block'">
+      <h3>Loop Summarization</h3>
+      <p>test loop sum...</p>
+    </a>
+    <div id="Loop Summarization" class="modal">
+      <div class="modal-content animate-bottom">
+        <div class="container">
+          <p>test loop sum</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+   
+
+  <script>
+    var modal;
+    function setModal(id) {
+      modal = document.getElementById(id);
+    }
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
+
+</html>

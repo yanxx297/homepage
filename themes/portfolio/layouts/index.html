@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<title>{{ .Title }}</title>
+
+<head>
+  <style>
+    body {
+      max-width: 60%;
+      padding-top: 25px;
+      margin: auto;
+      background-color: #f5f4f0;
+    }
+
+    p {
+      font-size: 14pt;
+      margin: 0px;
+      line-height: 1.3;
+    }
+
+    h2 {
+      margin: 0px;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      margin: 0px;
+      margin-top: 10px;
+    }
+
+    a {
+      cursor: pointer;
+    }
+
+    .modal {
+      z-index: 3;
+      display: none;
+      padding-top: 8%;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.4)
+    }
+
+    .modal-content {
+      margin: auto;
+      background-color: #fff;
+      position: relative;
+      padding: 40px;
+      outline: 0;
+      width: 60%;
+      max-height: calc(100vh - 210px);
+      overflow-y: auto;
+    }
+
+    .animate-bottom {
+      position: relative;
+      animation: animatebottom 0.4s
+    }
+
+    @keyframes animatebottom {
+      from {
+        bottom: -300px;
+        opacity: 0
+      }
+      to {
+        bottom: 0;
+        opacity: 1
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <table style="width:100%">
+    <tr>
+      <td rowspan="2" style="width:200px">
+        <image src="photo" style="width:90%;border-radius:10px"></image>
+      </td>
+      <td>
+        <p>Qiuchen Yan
+          <br /> PhD Student
+          <br /> Department of Science and Engineering
+          <br /> 4-225A
+          <br /> 200 Union St. SE.
+          <br /> University of Minnesota (Twin Cities)
+          <br /> Minneapolis, MN, 55455
+          <br /> yanxx297@umn.edu
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p><a href="resume.pdf" target="_blank">CV</a></p>
+      </td>
+    </tr>
+  </table>
+
+  <hr>
+  <h2>
+    <u>Projects</u>
+  </h2>
+  {{ range first 10 .Data.Pages }} {{ if eq .Type "project"}}
+  <div class="container">
+    <a onclick="setModal('{{ .Title }}');document.getElementById('{{ .Title }}').style.display='block'">
+      <h3>{{ .Title }}</h3>
+      <p>{{ .Summary }}...</p>
+    </a>
+    <div id="{{ .Title }}" class="modal">
+      <div class="modal-content animate-bottom">
+        <div class="container">
+          {{ .Content }}
+        </div>
+      </div>
+    </div>
+  </div>
+  {{ end }} {{ end }}
+
+  <script>
+    var modal;
+    function setModal(id) {
+      modal = document.getElementById(id);
+    }
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
+
+</html>
