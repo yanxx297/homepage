@@ -5,7 +5,7 @@
 <head>
   <style>
     body {
-      max-width: 60%;
+      max-width: 50%;
       padding-top: 25px;
       margin: auto;
       background-color: #f5f4f0;
@@ -83,7 +83,7 @@
       <td>
         <p>Qiuchen Yan
           <br /> PhD Student
-          <br /> Department of Science and Engineering
+          <br /> Department of Computer Science and Engineering
           <br /> 4-225A
           <br /> 200 Union St. SE.
           <br /> University of Minnesota (Twin Cities)
@@ -107,7 +107,7 @@
   <div class="container">
     <a onclick="setModal('{{ .Title }}');document.getElementById('{{ .Title }}').style.display='block'">
       <h3>{{ .Title }}</h3>
-      <p>{{ .Summary }}...</p>
+      <p>{{ .Summary }}...(read more)</p>
     </a>
     <div id="{{ .Title }}" class="modal">
       <div class="modal-content animate-bottom">
