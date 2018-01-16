@@ -3,32 +3,54 @@
 <title>{{ .Title }}</title>
 
 <head>
+  <link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
   <style>
     body {
+      font-family: 'PT Serif', serif;
       max-width: 50%;
       padding-top: 25px;
       margin: auto;
       background-color: #f5f4f0;
     }
 
+    .container {
+      padding-bottom: 10px;
+    }
+
     p {
-      font-size: 14pt;
+      font-size: 13pt;
       margin: 0px;
-      line-height: 1.3;
+      line-height: 1.5;
+    }
+
+    h2,h3 {
+      margin: 0px;
     }
 
     h2 {
-      margin: 0px;
-      margin-bottom: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      font-size: 30px;
     }
 
     h3 {
-      margin: 0px;
-      margin-top: 10px;
+      font-size: 20px;
     }
 
     a {
+      font-size: 13pt;
+      color: blue;
+      text-decoration: underline;
       cursor: pointer;
+    }
+
+    a:hover {
+      color: black;
+      cursor: pointer;
+    }
+
+    a:visited {
+      color: gray;
     }
 
     .modal {
@@ -101,13 +123,14 @@
 
   <hr>
   <h2>
-    <u>Projects</u>
+  <u>Projects</u>
   </h2>
-  {{ range first 10 .Data.Pages }} {{ if eq .Type "project"}}
+  {{ range .Data.Pages }} {{ if eq .Type "project"}}
   <div class="container">
-    <a onclick="setModal('{{ .Title }}');document.getElementById('{{ .Title }}').style.display='block'">
       <h3>{{ .Title }}</h3>
-      <p>{{ .Summary }}...(read more)</p>
+      <p>{{ .Summary }}</p>
+    <a onclick="setModal('{{ .Title }}');document.getElementById('{{ .Title }}').style.display='block'">
+      (read more)
     </a>
     <div id="{{ .Title }}" class="modal">
       <div class="modal-content animate-bottom">
