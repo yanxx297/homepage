@@ -14,7 +14,16 @@
     }
 
     .container {
-      padding-bottom: 10px;
+      padding-bottom: 5px;
+    }
+
+    ul {
+      margin: 0px;
+    }
+
+    th {
+      text-align: left;
+      font-size: 8pt;
     }
 
     p {
@@ -23,17 +32,23 @@
       line-height: 1.5;
     }
 
-    h2,h3 {
+    h2,h3,h4,h5 {
       margin: 0px;
+    }
+
+    h4,h5{
+      font-size: 12pt;
+      padding-top:5px;
     }
 
     h2 {
       padding-top: 5px;
-      padding-bottom: 5px;
-      font-size: 30px;
+      font-size: 27px;
     }
 
     h3 {
+      display: inline-block;
+      padding-top: 10px;
       font-size: 20px;
     }
 
@@ -50,13 +65,12 @@
     }
 
     a:visited {
-      color: gray;
+      color: purple;
     }
 
     .modal {
       z-index: 3;
       display: none;
-      padding-top: 8%;
       position: fixed;
       left: 0;
       top: 0;
@@ -69,11 +83,13 @@
 
     .modal-content {
       margin: auto;
+      margin-top: 40px;
       background-color: #fff;
       position: relative;
       padding: 40px;
       outline: 0;
       width: 60%;
+      max-width:800px;
       max-height: calc(100vh - 210px);
       overflow-y: auto;
     }
@@ -122,15 +138,32 @@
   </table>
 
   <hr>
-  <h2>
-  <u>Projects</u>
-  </h2>
+  <h2>Current Projects</h2>
   {{ range .Data.Pages }} {{ if eq .Type "project"}}
   <div class="container">
-      <h3>{{ .Title }}</h3>
-      <p>{{ .Summary }}</p>
+    <h3>{{ .Title }}</h3> <span style="font-size:10pt; font-style: italic;">Since {{ .Date.Format "Jan, 2006" }}</span>
+      {{ .Summary }}
     <a onclick="setModal('{{ .Title }}');document.getElementById('{{ .Title }}').style.display='block'">
-      (read more)
+      (read more...)
+    </a>
+    <div id="{{ .Title }}" class="modal">
+      <div class="modal-content animate-bottom">
+        <div class="container">
+          {{ .Content }}
+        </div>
+      </div>
+    </div>
+  </div>
+  {{ end }} {{ end }}
+
+  <hr>
+  <h2>Discontinued Projects</h2>
+  {{ range .Data.Pages }} {{ if eq .Type "archive"}}
+  <div class="container">
+    <h3>{{ .Title }}</h3> <span style="font-size:10pt; font-style: italic;">Since {{ .Date.Format "Jan, 2006" }}</span>
+      {{ .Summary }}
+    <a onclick="setModal('{{ .Title }}');document.getElementById('{{ .Title }}').style.display='block'">
+      (read more...)
     </a>
     <div id="{{ .Title }}" class="modal">
       <div class="modal-content animate-bottom">
