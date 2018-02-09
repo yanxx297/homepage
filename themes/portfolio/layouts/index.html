@@ -117,7 +117,7 @@
   <table style="width:100%">
     <tr>
       <td rowspan="2" style="width:200px">
-        <image src="photo" style="width:90%;border-radius:10px"></image>
+        <image src="photo" style="width:90%;border-radius:10px;image-orientation: from-image"></image>
       </td>
       <td>
         <p>Qiuchen Yan
@@ -133,7 +133,7 @@
     </tr>
     <tr>
       <td>
-        <p><a href="resume.pdf" target="_blank">CV</a></p>
+        <p><a href="intern-resume.pdf" target="_blank">CV</a></p>
       </td>
     </tr>
   </table>
@@ -173,6 +173,14 @@
         </div>
       </div>
     </div>
+  </div>
+  {{ end }} {{ end }}
+
+  <hr>
+  <h2>Publication</h2>
+  {{ range .Data.Pages }} {{ if eq .Type "publication"}}
+  <div class="container">
+          {{ .Content }}
   </div>
   {{ end }} {{ end }}
 

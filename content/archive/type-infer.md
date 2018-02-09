@@ -45,7 +45,7 @@ With the debugging information, we can assosiate each variable described in C to
 
 In practical, not only variables but also registers and memory locations are added to the graph as nodes.
 Furthermore, since the same location can be either signed or unsigned at different time,
-we also applies [static single assignment (SSA)](https://en.wikipedia.org/wiki/Static_single_assignment_form) in our analysis.
+In addition, we also applies [static single assignment (SSA)](https://en.wikipedia.org/wiki/Static_single_assignment_form) in our analysis, which requires building a CFG for the analyzed binary.
 
 
 ### Evaluation
