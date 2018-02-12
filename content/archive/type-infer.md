@@ -4,7 +4,7 @@ title = "Type Inference"
 
 +++
 Recovering variable types or other structural information from binaries is useful for reverse engineering in security, and to facilitate other kinds of analysis on binaries.
-In this project, we statically infer the signedess of variables using a grapg-based algorithm and heuristics about variable types.
+In this project, we statically infer the signedess of variables using a graph-based algorithm and heuristics about variable types.
 A [technical report](https://www.cs.umn.edu/research/technical_reports/view/14-006) for this project is available.
 <!--more-->
 
@@ -20,7 +20,7 @@ And since developers prefer source code with a minimum number of casts, we would
 between signed and unsigned variables, which corresponds to a minimal set of casts required for a legal typing.
 
 #### Signedness Instructions
-A graph can have multiple sets of minimum cuts if we don't hve any other limitating factors.
+A graph can have multiple sets of minimum cuts if we don't have any other limitating factors.
 To find the most accurate one, we would like to infer the signedness of as many variables as possible before we cut the graph.
 We perform the first round of signedness inference based on heuristics about signedness instructions/operations.
 
@@ -41,7 +41,7 @@ We than build a graph for each function of the binary, and perform minimum cut a
 Since our goal is only to infer the type of variables, we simplify the data structure inference by using knowledges in debugging information directly.
 For this purpose, all the binaries to analyze are compiled with -g option on,
 and we parse debugging information using [libdwarf](https://www.prevanders.net/dwarf.html).
-With the debugging information, we can assosiate each variable described in C to a location described in X86 assembly.
+With the debugging information, we can associate each variable described in C to a location described in X86 assembly.
 
 In practical, not only variables but also registers and memory locations are added to the graph as nodes.
 Furthermore, since the same location can be either signed or unsigned at different time,
