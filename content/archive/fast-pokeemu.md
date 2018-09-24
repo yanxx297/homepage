@@ -71,6 +71,7 @@ The probability that 2 cipher text equals increase as more round function differ
 #### Effectiveness
 In this experiment we compared the testing results of vanilla PokeEMU (column 1), Fast PokeEMU without aggregation (column 2) and Fast PokeEMU (column 3.)
 Most time the results of all three cases should be the same if there is no bug in Fast PokeEMU, but Fast PokeEMU may detect additional bugs.
+
 |Separated result | Separated result with extra code | Aggregated result |# of instructions |
 | -----------|:---------:|:---------:| ---------:|
 |	Match     | Match    	| Match		| 577 |
